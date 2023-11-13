@@ -6,7 +6,8 @@ import (
 )
 
 func main() {
-	database.Connect()
+	database.ConnectDb()
+
 	app := fiber.New()
 
 	app.Get("/", func(c *fiber.Ctx) error {
