@@ -11,11 +11,11 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-type Dbinstance struct {
+type DBinstance struct {
 	DB *gorm.DB
 }
 
-var DB Dbinstance
+var DB DBinstance
 
 func ConnectDb() {
 	dsn := fmt.Sprintf(
@@ -40,7 +40,7 @@ func ConnectDb() {
 	log.Println("running migrations")
 	db.AutoMigrate(&models.Fact{})
 
-	DB = Dbinstance{
-		Db: db,
+	DB = DBinstance{
+		DB: db,
 	}
 }
