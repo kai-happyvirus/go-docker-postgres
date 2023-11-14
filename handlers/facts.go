@@ -1,14 +1,14 @@
 package handlers
 
 import (
+	"github.com/gofiber/fiber/v2"
 	"github.com/kai-happyvirus/go-docker-postgres/database"
 	"github.com/kai-happyvirus/go-docker-postgres/models"
-	"github.com/gofiber/fiber/v2"
 )
 
 func ListFacts(c *fiber.Ctx) error {
 	facts := []models.Fact{}
-	database.DB.Db.Find(&facts)
+	database.DB.DB.Find(&facts)
 
 	return c.Status(200).JSON(facts)
 }
@@ -21,7 +21,7 @@ func CreateFact(c *fiber.Ctx) error {
 		})
 	}
 
-	database.DB.Db.Create(&fact)
+	database.DB.DB.Create(&fact)
 
 	return c.Status(200).JSON(fact)
 }
